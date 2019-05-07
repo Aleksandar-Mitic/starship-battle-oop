@@ -1,7 +1,10 @@
 <?php
+require_once __DIR__.'/lib/Ship.php';
 require __DIR__.'/functions.php';
 
 $ships = get_ships();
+
+// var_dump($ships); die();
 
 $errorMessage = '';
 if (isset($_GET['error'])) {
@@ -65,15 +68,15 @@ if (isset($_GET['error'])) {
                 <tbody>
                     <?php foreach ($ships as $ship): ?>
                         <tr>
-                            <td><?php echo $ship['name']; ?></td>
-                            <td><?php echo $ship['weapon_power']; ?></td>
-                            <td><?php echo $ship['jedi_factor']; ?></td>
-                            <td><?php echo $ship['strength']; ?></td>
+                            <td><?php echo $ship->getName(); ?></td>
+                            <td><?php echo $ship->getWeaponPower(); ?></td>
+                            <td><?php echo $ship->getJediFactor(); ?></td>
+                            <td><?php echo $ship->getStrength(); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            
+
             <div class="battle-box center-block border">
                 <div>
                     <form method="POST" action="/battle.php">
@@ -82,7 +85,7 @@ if (isset($_GET['error'])) {
                         <select class="center-block form-control btn drp-dwn-width btn-default dropdown-toggle" name="ship1_name">
                             <option value="">Choose a Ship</option>
                             <?php foreach ($ships as $key => $ship): ?>
-                                <option value="<?php echo $key; ?>"><?php echo $ship['name']; ?></option>
+                                <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
                             <?php endforeach; ?>
                         </select>
                         <br>
@@ -92,7 +95,7 @@ if (isset($_GET['error'])) {
                         <select class="center-block form-control btn drp-dwn-width btn-default dropdown-toggle" name="ship2_name">
                             <option value="">Choose a Ship</option>
                             <?php foreach ($ships as $key => $ship): ?>
-                                <option value="<?php echo $key; ?>"><?php echo $ship['name']; ?></option>
+                                <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
                             <?php endforeach; ?>
                         </select>
                         <br>

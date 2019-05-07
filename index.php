@@ -63,6 +63,7 @@ if (isset($_GET['error'])) {
                         <th>Weapon Power</th>
                         <th>Jedi Factor</th>
                         <th>Strength</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,6 +73,18 @@ if (isset($_GET['error'])) {
                             <td><?php echo $ship->getWeaponPower(); ?></td>
                             <td><?php echo $ship->getJediFactor(); ?></td>
                             <td><?php echo $ship->getStrength(); ?></td>
+                            <td>
+                                <?php
+
+                                    if ($ship->isFunctional()) {
+                                        echo '<i class="fa fa-sun-o"></i>';
+                                    } else {
+                                        echo '<i class="fa fa-cloud"></i>';
+                                    }
+
+                                ?>
+
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -85,7 +98,9 @@ if (isset($_GET['error'])) {
                         <select class="center-block form-control btn drp-dwn-width btn-default dropdown-toggle" name="ship1_name">
                             <option value="">Choose a Ship</option>
                             <?php foreach ($ships as $key => $ship): ?>
-                                <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
+                                <?php if ($ship->isFunctional()): ?>
+                                    <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
+                                <?php endif ?>
                             <?php endforeach; ?>
                         </select>
                         <br>
@@ -95,7 +110,9 @@ if (isset($_GET['error'])) {
                         <select class="center-block form-control btn drp-dwn-width btn-default dropdown-toggle" name="ship2_name">
                             <option value="">Choose a Ship</option>
                             <?php foreach ($ships as $key => $ship): ?>
-                                <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
+                                <?php if ($ship->isFunctional()): ?>
+                                    <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
+                                <?php endif ?>
                             <?php endforeach; ?>
                         </select>
                         <br>

@@ -7,6 +7,14 @@ class Ship
     private $weaponPower = 0;
     private $jediFactor = 0;
     private $strength = 0;
+    private $underRepair;
+
+    function __construct($name)
+    {
+        $this->name = $name;
+        $this->underRepair = mt_rand(1, 100) < 30;
+    }
+
 
     public function getNameAndSpecs()
     {
@@ -17,6 +25,11 @@ class Ship
             $this->jediFactor,
             $this->strength
         );
+    }
+
+    public function isFunctional()
+    {
+        return !$this->underRepair;
     }
 
     public function doesGivenShipHasMoreStrength($givenShip)
@@ -117,4 +130,5 @@ class Ship
 
         return $this;
     }
-}
+
+} // end of class Ship

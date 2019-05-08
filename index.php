@@ -1,8 +1,12 @@
 <?php
 require_once __DIR__.'/lib/Ship.php';
-require __DIR__.'/functions.php';
+require_once __DIR__.'/lib/BattleManager.php';
+require_once __DIR__.'/lib/ShipLoader.php';
+require __DIR__.'/bootstrap.php';
 
-$ships = get_ships();
+
+$shipLoader = new ShipLoader();
+$ships = $shipLoader->getShips();
 
 // var_dump($ships); die();
 

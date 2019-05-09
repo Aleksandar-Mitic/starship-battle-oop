@@ -4,7 +4,14 @@ require_once __DIR__.'/lib/BattleManager.php';
 require_once __DIR__.'/lib/ShipLoader.php';
 require __DIR__.'/bootstrap.php';
 
-$shipLoader = new ShipLoader();
+$pdo = new PDO(
+    $configuration['db_dsn'],
+    $configuration['db_user'],
+    $configuration['db_pass']
+);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$shipLoader = new ShipLoader($pdo);
 $ships = $shipLoader->getShips();
 
 $ship1Id = isset($_POST['ship1_id']) ? $_POST['ship1_id'] : null;

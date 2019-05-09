@@ -1,12 +1,8 @@
 <?php
-require_once __DIR__.'/lib/Ship.php';
-require_once __DIR__.'/lib/BattleManager.php';
-require_once __DIR__.'/lib/ShipLoader.php';
 require __DIR__.'/bootstrap.php';
 
 $container = new Container($configuration);
-$pdo = $container->getPDO();
-$shipLoader = new ShipLoader($pdo);
+$shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 
 $errorMessage = '';

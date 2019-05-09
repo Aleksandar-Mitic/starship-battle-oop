@@ -1,12 +1,8 @@
 <?php
-require_once __DIR__.'/lib/Ship.php';
-require_once __DIR__.'/lib/BattleManager.php';
-require_once __DIR__.'/lib/ShipLoader.php';
 require __DIR__.'/bootstrap.php';
 
 $container = new Container($configuration);
-$pdo = $container->getPDO();
-$shipLoader = new ShipLoader($pdo);
+$shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 
 $ship1Id = isset($_POST['ship1_id']) ? $_POST['ship1_id'] : null;
@@ -32,7 +28,8 @@ if ($ship1Quantity <= 0 || $ship2Quantity <= 0) {
     die;
 }
 
-$battleManager = new BattleManager();
+
+$battleManager = $container->getBattleManager();
 
 $battleResult = $battleManager->battle($ship1, $ship1Quantity, $ship2, $ship2Quantity);
 ?>

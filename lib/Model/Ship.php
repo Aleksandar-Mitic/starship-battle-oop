@@ -153,4 +153,10 @@ class Ship
         return $this;
     }
 
+    public function getType()
+    {
+        return 'Empire';
+    }
+
+
 } // end of class Ship

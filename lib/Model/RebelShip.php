@@ -1,6 +1,6 @@
 <?php
 
-class RebelShip extends Ship
+class RebelShip extends AbstractShip
 {
 
     public function getFavoriteJedi()
@@ -10,16 +10,11 @@ class RebelShip extends Ship
         return $coolJedis[$key];
     }
 
-
     public function getNameAndSpecs()
     {
-        return sprintf(
-            '%s/%s/%s/%s (Rebel)',
-            $this->getName(),
-            $this->getWeaponPower(),
-            $this->getJediFactor(),
-            $this->getStrength()
-        );
+        $val = parent::getNameAndSpecs();
+        $val .= ' (Rebel)';
+        return $val;
     }
 
     public function getType()
@@ -30,6 +25,11 @@ class RebelShip extends Ship
     public function isFunctional()
     {
         return true;
+    }
+
+    public function getJediFactor()
+    {
+        return rand(10, 30);
     }
 
 }

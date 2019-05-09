@@ -1,12 +1,16 @@
 <?php
 
-class AbstractShip
+abstract class AbstractShip
 {
 
     private $id;
     private $name;
     private $weaponPower = 0;
     private $strength = 0;
+
+    abstract public function getJediFactor();
+    abstract public function getType();
+    abstract public function isFunctional();
 
     function __construct($name)
     {

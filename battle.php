@@ -13,20 +13,23 @@ $ship2Quantity = isset($_POST['ship2_quantity']) ? $_POST['ship2_quantity'] : 1;
 $ship1 = $shipLoader->findOneById($ship1Id);
 $ship2 = $shipLoader->findOneById($ship2Id);
 
-if (!$ship1Id || !$ship2Id) {
-    header('Location: /index.php?error=missing_data');
-    die;
-}
+// var_dump($ship1);
+// var_dump($ship2);
 
-if (!$ship1 || !$ship2) {
-    header('Location: /index.php?error=bad_ships');
-    die;
-}
+// if (!$ship1Id || !$ship2Id) {
+//     header('Location: /index.php?error=missing_data');
+//     die;
+// }
 
-if ($ship1Quantity <= 0 || $ship2Quantity <= 0) {
-    header('Location: /index.php?error=bad_quantities');
-    die;
-}
+// if (!$ship1 || !$ship2) {
+//     header('Location: /index.php?error=bad_ships');
+//     die;
+// }
+
+// if ($ship1Quantity <= 0 || $ship2Quantity <= 0) {
+//     header('Location: /index.php?error=bad_quantities');
+//     die;
+// }
 
 
 $battleManager = $container->getBattleManager();

@@ -5,6 +5,14 @@ $container = new Container($configuration);
 $shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 
+
+// $pdo = $container->getPDO();
+// $test = new PdoShipStorage($pdo);
+// var_dump($test->fetchSingleShipData(2));
+
+// $brokenShip = new BrokenShip('Br');
+// $ships[] = $brokenShip;
+
 $errorMessage = '';
 if (isset($_GET['error'])) {
     switch ($_GET['error']) {

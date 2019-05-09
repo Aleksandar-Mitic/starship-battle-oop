@@ -4,16 +4,9 @@ require_once __DIR__.'/lib/BattleManager.php';
 require_once __DIR__.'/lib/ShipLoader.php';
 require __DIR__.'/bootstrap.php';
 
-
-$pdo = new PDO(
-    $configuration['db_dsn'],
-    $configuration['db_user'],
-    $configuration['db_pass']
-);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+$container = new Container($configuration);
+$pdo = $container->getPDO();
 $shipLoader = new ShipLoader($pdo);
-
 $ships = $shipLoader->getShips();
 
 $errorMessage = '';

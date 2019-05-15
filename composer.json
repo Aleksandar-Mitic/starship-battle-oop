@@ -1,0 +1,11 @@
+{
+    "name": "alex-linux/starship-battle-oop",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Aleksandar Mitić",
+            "email": "aleksandar.webart@gmail.com"
+        }
+    ],
+    "require": {}
+}
